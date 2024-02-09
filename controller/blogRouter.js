@@ -12,10 +12,4 @@ router.post("/signup",async(req,res)=>{
     })
 })
 
-router.post("/signin",async(req,res)=>{
-    let input=req.body
-    let data=await usermodel.find(input)
-    res.json(data)
-})
-
 module.exports=router
