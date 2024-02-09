@@ -14,4 +14,9 @@ router.post("/add",async(req,res)=>{
     res.send("success")
 })
 
+router.get("/view",async(req,res)=>{
+    let result=await postModel.find()
+    res.json(result)
+})
+
 module.exports=router
