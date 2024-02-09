@@ -16,12 +16,38 @@ router.post("/signup",async(req,res)=>{
         (hashedPassword)=>{
             console.log(hashedPassword)
             data.pass=hashedPassword
+            console.log(data)
+    
+            let details=new usermodel(data)
+            let result= details.save()
+            res.json({
+                status:"success"
+            })
         }
     )
+
+})
+
+router.post("/signin",async(req,res)=>{
+    let input=req.body
+    let email=req.body.email
+    let data=await usermodel.findOne({"email":email})
+    if (!data) {
+        return res.json(
+            {
+                status:"invalid user"
+            }
+        )
+    }
     console.log(data)
-    
-    let details=new usermodel(data)
-    let result=await details.save()
+    let dbPass=data.pass
+    let inputPass=req.body.pass
+    const match=await bcrypt.compare(inputPass,dbPass)
+    if (!match) {
+        return res.json({
+            status:"incorrect password"
+        })
+    }
     res.json({
         status:"success"
     })
