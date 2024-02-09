@@ -16,6 +16,8 @@ router.post("/add",async(req,res)=>{
 
 router.get("/view",async(req,res)=>{
     let result=await postModel.find()
+    .populate("userId","name age phone address pin email pass -_id")
+    .exec()
     res.json(result)
 })
 
