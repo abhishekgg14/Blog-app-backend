@@ -50,7 +50,7 @@ router.post("/signin",async(req,res)=>{
     }
     res.json({
         status:"success",
-        "userData":data
+        "userdata":data
     })
 })
 

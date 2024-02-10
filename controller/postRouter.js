@@ -13,7 +13,7 @@ router.post("/add",async(req,res)=>{
     res.send("success")
 })
 
-router.get("/view",async(req,res)=>{
+router.post("/view",async(req,res)=>{
     let result=await postModel.find()
     .populate("userId","name age phone address pin email pass -_id")
     .exec()
