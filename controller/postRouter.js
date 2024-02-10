@@ -1,5 +1,4 @@
 const express=require("express")
-const carModel=require("../models/postModel")
 const postModel = require("../models/postModel")
 
 const router=express.Router()
